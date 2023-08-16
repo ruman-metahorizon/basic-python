@@ -1,0 +1,9 @@
+git status
+git add .
+git commit -m "message"
+git stash # save in memory changes"
+git checkout -b "new branch name" # create new branch
+git checkout "branch name"
+git pull origin "branch name"
+git push origin "branch name"
+
