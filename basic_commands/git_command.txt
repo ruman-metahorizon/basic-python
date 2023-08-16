@@ -6,3 +6,4 @@ git checkout -b "new branch name" # create new branch
 git checkout "branch name"
 git pull origin "branch name"
 git push origin "branch name"
+
