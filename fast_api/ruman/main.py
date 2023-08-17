@@ -1,46 +1,55 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
+from fastapi import Depends, FastAPI, HTTPException
+from sqlalchemy.orm import Session
+
+import crud
+import models
+import schemas
+from database import SessionLocal, engine
+
+models.Base.metadata.create_all(bind=engine)
+
 app = FastAPI()
 
-class User(BaseModel):
-    name: str
-    age: int
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
 
-@app.get("/users/{user_id}")
-async def read_item(user_id):
-    return {"user_id": user_id}
-
-@app.get("/users")
-async def get_all_users():
-    return [{"user_id1": "ruman"}, {"user_1": "user2"}]
+# Dependency
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 
-@app.get("/users/")
-async def get_user_pagination(skip: int = 0, limit: int = 10):
-    return [{"user_id1": "ruman"}, {"user_1": "user2"}, {"page": skip}, {"limit": limit}]
+@app.post("/users/", response_model=schemas.User)
+def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
+    db_user = crud.get_user_by_email(db, email=user.email)
+    if db_user:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    return crud.create_user(db=db, user=user)
 
-@app.post("/user")
-async def create_user(user: User):
-    # add unique id to user
-    # TODO:: save user to database and return
-    return user
 
-@app.put("/user/{user_id}")
-async def create_item(user_id: int, new_user: User):
-    # TODO:: get user by user_id from Database old_user
-    # TODO:: update old_user with new_user
-    # TODO:: save new_user in database
-    # TODO:: return save user
-    return {"user_id": user_id, **new_user.dict()}
+@app.get("/users/", response_model=list[schemas.User])
+def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    users = crud.get_users(db, skip=skip, limit=limit)
+    return users
 
-@app.patch("/user/{user_id}")
-async def patch_user(user_id: int, user: User):
-    # TODO:: delete user by id
-    return user_id
-@app.delete("/user/{user_id}")
-async def delete_user(user_id: int):
-    # TODO:: delete user by id
-    return user_id
+
+@app.get("/users/{user_id}", response_model=schemas.User)
+def read_user(user_id: int, db: Session = Depends(get_db)):
+    db_user = crud.get_user(db, user_id=user_id)
+    if db_user is None:
+        raise HTTPException(status_code=404, detail="User not found")
+    return db_user
+
+
+@app.post("/users/{user_id}/items/", response_model=schemas.Item)
+def create_item_for_user(
+    user_id: int, item: schemas.ItemCreate, db: Session = Depends(get_db)
+):
+    return crud.create_user_item(db=db, item=item, user_id=user_id)
+
+
+@app.get("/items/", response_model=list[schemas.Item])
+def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    items = crud.get_items(db, skip=skip, limit=limit)
+    return items
