@@ -1,0 +1,11 @@
+https://www.educative.io/answers/how-to-use-postgresql-database-in-fastapi
+
+
+https://www.postgresql.org/download/
+
+
+sudo -i -u postgres
+
+sudo apt install pgadmin4
+
+ALTER USER postgres PASSWORD 'my_password';
