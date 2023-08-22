@@ -53,3 +53,33 @@ def create_item_for_user(
 def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     items = crud.get_items(db, skip=skip, limit=limit)
     return items
+
+@app.put("/users/{user_id}", response_model=schemas.User)
+def update_user_endpoint(
+    user_id: int, updated_user: schemas.UserUpdate, db: Session = Depends(get_db)
+):
+    user = crud.update_user(db, user_id, updated_user)
+    if user:
+        return user
+    else:
+        raise HTTPException(status_code=404, detail="User not found")
+
+
+@app.put("/user/{user_id}/items/{item_id}", response_model=schemas.Item)
+def update_user_item_endpoint(
+        user_id: int, item_id: int, updated_item: schemas.ItemUpdate,
+        db: Session = Depends(get_db)):
+    user_item = crud.update_item(db, item_id, updated_item)
+    if user_item:
+        return user_item
+    else:
+        raise HTTPException(status_code=404, detail="Item not found")
+
+
+@app.delete("/users/{user_id}", response_model=schemas.User)
+def delete_user_endpoint(user_id: int, db: Session = Depends(get_db)):
+    deleted_user = crud.delete_user(db, user_id)
+    if deleted_user:
+        return deleted_user
+    else:
+        raise HTTPException(status_code=404, detail="User not found")
