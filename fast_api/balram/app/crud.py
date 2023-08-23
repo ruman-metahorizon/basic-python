@@ -1,4 +1,3 @@
-from flask.scaffold import F
 from sqlalchemy.orm import Session
 
 import models, schemas
@@ -23,15 +22,15 @@ def create_user(db:Session, user: schemas.UserCreate):
 
 
 
-def get_items(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.Item).offset(skip).limit(limit).all()
+def get_posts(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Post).offset(skip).limit(limit).all()
 
-def get_item_by_title(db: Session, title: str):
-    return db.query(models.Item).filter(models.Item.title==title).first()
+def get_post_by_title(db: Session, title: str):
+    return db.query(models.Post).filter(models.Post.title==title).first()
 
-def create_item(db:Session, item: schemas.ItemCreate):
-    db_item = models.Item(title=item.title, description=item.description)
-    db.add(db_item)
+def create_post(db:Session, post: schemas.PostCreate):
+    db_post = models.Post(title=post.title, description=post.description)
+    db.add(db_post)
     db.commit()
-    db.refresh(db_item)
-    return db_item
+    db.refresh(db_post)
+    return db_post

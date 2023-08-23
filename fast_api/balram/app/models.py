@@ -16,8 +16,8 @@ class User(Base):
                         nullable=False, server_default=text('now()'))
     # items = relationship("Item", back_populatesnul lable=False="owner")
 
-class Item(Base):
-    __tablename__ = "items"
+class Post(Base):
+    __tablename__ = "posts"
 
     id = Column(Integer, primary_key=True, nullable=False, index=True)
     title = Column(String, unique=True, nullable=False, index=True)

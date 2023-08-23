@@ -53,17 +53,15 @@ def read_user(user_id: int, db: Session = Depends(get_db)):
 
 
 
-@app.post("/items/", response_model=schemas.Item)
-def create_item(item: schemas.ItemCreate, db: Session = Depends(get_db)):
-    db_item = crud.get_item_by_title(db, title=item.title)
-    if db_item:
+@app.post("/posts/", response_model=schemas.Post)
+def create_item(post: schemas.PostCreate, db: Session = Depends(get_db)):
+    db_post = crud.get_post_by_title(db, title=post.title)
+    if db_post:
         raise HTTPException(status_code=400, detail="item already exists")
-    return crud.create_item(db=db, item=item)
+    return crud.create_post(db=db, post=post)
 
 
-@app.get("/items/", response_model=list[schemas.Item])
-def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    items = crud.get_items(db, skip=skip, limit=limit)
-    return items
-
-
+@app.get("/posts/", response_model=list[schemas.Post])
+def read_posts(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    posts = crud.get_posts(db, skip=skip, limit=limit)
+    return posts

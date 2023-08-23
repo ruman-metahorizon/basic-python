@@ -1,21 +1,20 @@
 from typing import Union
-
 from pydantic import BaseModel
 
 
-class ItemBase(BaseModel):
+class PostBase(BaseModel):
     title: str
     description: Union[str, None] = None
 
-class ItemCreate(ItemBase):
+class PostCreate(PostBase):
     pass 
 
-class Item(ItemBase):
+class Post(PostBase):
     id: int
     # owner_id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 
@@ -28,8 +27,8 @@ class UserCreate(UserBase):
 class User(UserBase):
     id: int
     is_active: bool
-    items: list[Item] = []
+    
 
     class Config:
-        orm_mode = True
+        from_attributes = True
         
