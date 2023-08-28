@@ -1,5 +1,5 @@
-from typing import Annotated, Union
-import jwt
+
+from typing import Annotated
 
 from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
@@ -34,9 +34,15 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 class User(BaseModel):
     username: str
+<<<<<<< HEAD
     email: Union[str, None] = None
     full_name: Union[str, None] = None
     disabled: Union[bool, None] = None
+=======
+    email: str | None = None
+    full_name: str | None = None
+    disabled: bool | None = None
+>>>>>>> 73df2ec (commit)
 
 
 class UserInDB(User):
@@ -84,8 +90,13 @@ async def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]):
     hashed_password = fake_hash_password(form_data.password)
     if not hashed_password == user.hashed_password:
         raise HTTPException(status_code=400, detail="Incorrect username or password")
+<<<<<<< HEAD
     encoded_jwt = jwt.encode(user_dict, "secret", algorithm="HS256")
     return {"access_token": encoded_jwt, "token_type": "bearer"}
+=======
+
+    return {"access_token": user.username, "token_type": "bearer"}
+>>>>>>> 73df2ec (commit)
 
 
 @app.get("/users/me")
