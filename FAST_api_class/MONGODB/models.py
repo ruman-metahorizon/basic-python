@@ -4,3 +4,6 @@ class Todo(BaseModel):
     name: str
     description :str 
     completed: bool
+
+
+# BY IMPORTING BASEMODEL < PREPARE A MODEL
