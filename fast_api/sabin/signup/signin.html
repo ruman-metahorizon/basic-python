@@ -1,91 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
 </head>
+
 <body>
-    <div>
-        <div class="container text-center">
-            <div class="row">
-              <div class="col">
-                <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg" class="img-thumbnail" alt="">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Image -->
+                <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg" class="img-fluid" alt="" />
             </div>
-            <div class="col">
-                
+           
+            <div class="col-md-6">
                 <form class="row g-3">
-                    <h2 style="text-align: center;">Student Registration Form</h2>
-                    <div class="row">
-                        <div class="col">
-                          <input type="text" class="form-control" placeholder="First name" aria-label="First name">
-                        </div>
-                        <div class="col">
-                          <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
-                        </div>
-                      </div>
+                    <h2 style="text-align: center">Student Registration Form</h2>
                     <div class="col-12">
-                      <!-- <label for="inputAddress" class="form-label">Address</label> -->
-                      <input type="text" class="form-control" id="inputAddress" placeholder="Address">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="First name"
+                                    aria-label="First name" />
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Last name"
+                                    aria-label="Last name" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <input type="text" class="form-control" id="inputAddress" placeholder="Address" />
                     </div>
                     <div class="col-12">
                         <label for="gender" class="form-label">Gender: </label>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                value="option1" />
                             <label class="form-check-label" for="inlineRadio1">Female</label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                value="option2" />
                             <label class="form-check-label" for="inlineRadio2">Male</label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                                value="option3" disabled />
                             <label class="form-check-label" for="inlineRadio3">Other</label>
-                          </div>
+                        </div>
                     </div>
                     <div class="col-md-7">
-                      <label for="inputState" class="form-label">State</label>
-                      <select id="inputState" class="form-select">
-                        <option selected>Choose...</option>
-                        <option>...</option>
-                      </select>
+                        <select id="inputState" class="form-select">
+                            <option selected>State</option>
+                            <option>...</option>
+                        </select>
                     </div>
                     <div class="col-md-5">
-                        <label for="inputCity" class="form-label">City</label>
                         <select id="inputState" class="form-select">
-                            <option selected>Choose...</option>
+                            <option selected>City</option>
                             <option>...</option>
-                          </select>
+                        </select>
                     </div>
                     <div class="col-12">
-                        <!-- <label for="inputAddress2" class="form-label">Address 2</label> -->
-                        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                      </div>
+                        <input type="text" class="form-control" id="pincode" placeholder="Pincode" />
+                    </div>
 
-                    <!-- <div class="col-md-2">
-                      <label for="inputZip" class="form-label">Zip</label>
-                      <input type="text" class="form-control" id="inputZip">
-                    </div> -->
                     <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                        <label class="form-check-label" for="gridCheck">
-                          Check me out
-                        </label>
-                      </div>
+                        <input type="text" class="form-control" id="course" placeholder="Course" />
                     </div>
                     <div class="col-12">
-                        <!-- <label for="inputAddress2" class="form-label">Address 2</label> -->
-                        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                      </div>
-                    <div class="col-12">
-                      <button type="submit" class="btn btn-primary">Sign in</button>
+                        <input type="email" class="form-control" id="email_id" placeholder="Email ID" />
                     </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="button" class="btn btn-light">RESET ALL</button>
+                        <button type="submit" class="btn btn-warning">
+                            SUBMIT FORM
+                        </button>
+                    </div>
+                </form>
             </div>
-        
-          </form>
+        </div>
     </div>
 </body>
+
 </html>
