@@ -1,4 +1,5 @@
 from typing import Annotated
+import jwt
 
 from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
@@ -83,6 +84,7 @@ async def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]):
     hashed_password = fake_hash_password(form_data.password)
     if not hashed_password == user.hashed_password:
         raise HTTPException(status_code=400, detail="Incorrect username or password")
+    encoded_jwt = jwt.encode(user_dict, "secret", algorithm="HS256")
 
     return {"access_token": user.username, "token_type": "bearer"}
 
