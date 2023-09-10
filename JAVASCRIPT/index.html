@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Running Watch</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        #watch {
+            width: 300px;
+            height: 300px;
+            background-color: #000;
+            border-radius: 50%;
+            margin: 100px auto;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .hand {
+            position: absolute;
+            background-color: #000;
+            transform-origin: 100%;
+            transition: transform 0.5s cubic-bezier(0.4, 2.1, 0.36, 0.91);
+        }
+
+        #hourHand {
+            width: 6px;
+            height: 80px;
+            top: 110px;
+            left: 147px;
+            transform: rotate(90deg);
+        }
+
+        #minuteHand {
+            width: 4px;
+            height: 120px;
+            top: 90px;
+            left: 148px;
+            transform: rotate(180deg);
+        }
+
+        #secondHand {
+            width: 2px;
+            height: 140px;
+            top: 80px;
+            left: 149px;
+            background-color: #ff0000;
+            transform: rotate(270deg);
+        }
+
+        #time {
+            font-size: 24px;
+            font-weight: bold;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+        }
+
+        #showTimeButton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #showTimeButton:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="watch">
+        <div class="hand" id="hourHand"></div>
+        <div class="hand" id="minuteHand"></div>
+        <div class="hand" id="secondHand"></div>
+        <div id="time">Click the button to display the time.</div>
+    </div>
+    <button id="showTimeButton">Show Time</button>
+
+    <script>
+        // Function to update the clock hands
+        function updateClock() {
+            const hourHand = document.getElementById("hourHand");
+            const minuteHand = document.getElementById("minuteHand");
+            const secondHand = document.getElementById("secondHand");
+            const currentTime = new Date();
+            const hours = currentTime.getHours() % 12;
+            const minutes = currentTime.getMinutes();
+            const seconds = currentTime.getSeconds();
+            const hourDeg = (360 / 12) * (hours + minutes / 60);
+            const minuteDeg = (360 / 60) * minutes;
+            const secondDeg = (360 / 60) * seconds;
+            hourHand.style.transform = `rotate(${hourDeg}deg)`;
+            minuteHand.style.transform = `rotate(${minuteDeg}deg)`;
+            secondHand.style.transform = `rotate(${secondDeg}deg)`;
+        }
+
+        // Function to display and continuously update the current time
+        function displayCurrentTime() {
+            const timeParagraph = document.getElementById("time");
+            function updateCurrentTime() {
+                const currentTime = new Date();
+                const formattedTime = currentTime.toLocaleTimeString();
+                timeParagraph.textContent = formattedTime;
+            }
+
+            // Initial display
+            updateCurrentTime();
+
+            // Update every second (1000 milliseconds)
+            setInterval(updateCurrentTime, 1000);
+        }
+
+        // Add a click event listener to the button
+        const showTimeButton = document.getElementById("showTimeButton");
+        showTimeButton.addEventListener("click", () => {
+            displayCurrentTime();
+            // Update clock hands immediately after clicking the button
+            updateClock();
+        });
+
+        // Initial clock hands update
+        updateClock();
+    </script>
+</body>
+</html>
