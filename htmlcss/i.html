@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>Student Login</title>
+</head>
+<body>
+    <div class="wrapper">
+       
+        <div class="col-md-6">
+            <form class="row g-3">
+                <h2 style="text-align: center">Student Registration Form</h2>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="First name"
+                                aria-label="First name" />
+                        </div><br>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Last name"
+                                aria-label="Last name" />
+                        </div>
+                    </div><br>
+                </div>
+                <div class="col-12">
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Address" />
+                </div><br>
+                <div class="col-12">
+                    <label for="gender" class="form-label">Gender: </label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                            value="option1" />
+                        <label class="form-check-label" for="inlineRadio1">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                            value="option2" />
+                        <label class="form-check-label" for="inlineRadio2">Female</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                            value="option3" disabled />
+                        <label class="form-check-label" for="inlineRadio3">Other</label>
+                    </div>
+                </div><br>
+                <div class="col-md-7">
+                    <select id="inputState" class="form-select">
+                        <option selected>Courses</option>
+                        <option>Data Science</option>
+                        <option >Full Stack Python Developer</option>
+                    </select>
+                </div><br>
+                <div class="col-md-5">
+                    <select id="inputState" class="form-select">
+                        <option selected>Timing</option>
+                        <option>6am-8am</option>
+                        <option>9am-11am</option>
+                        <option>12pm-2pm</option>
+                        <option>3pm-5pm</option>
+                    </select>
+                </div><br>
+                <div class="col-12">
+                    <input type="text" class="form-control" id="pincode" placeholder="Phone Number" />
+                </div><br>
+
+                <div class="col-12">
+                    <input type="email" class="form-control" id="email_id" placeholder="Email ID" />
+                </div><br>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="button" class="btn btn-light">RESET ALL</button>
+                    <button type="submit" class="btn btn-warning">
+                        SUBMIT FORM
+                    </button>
+                </div><br><br><br><br><br><br>
+            </form>
+        </div>
+    </div>
+</div>
+    </div>
+</body>
+</html>
