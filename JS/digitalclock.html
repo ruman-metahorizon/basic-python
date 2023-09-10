@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock with Date and Day</title>
+    <style>
+        /* Styles for the digital clock container */
+        .clock-container {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Styles for the clock elements */
+        .clock {
+            font-size: 3rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock-container">
+        <div class="clock" id="clock"></div>
+    </div>
+    
+    <script>
+        function updateDigitalClock() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateTimeString = now.toLocaleDateString(undefined, options) + "<br>" + now.toLocaleTimeString();
+
+            document.getElementById('clock').innerHTML = dateTimeString;
+        }
+
+        // Update the digital clock every second
+        setInterval(updateDigitalClock, 1000);
+
+        // Initial call to set the clock to the current date and time
+        updateDigitalClock();
+    </script>
+</body>
+</html>
