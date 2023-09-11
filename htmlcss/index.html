@@ -44,6 +44,23 @@
             border-radius: 4px;
         }
 
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .radio-group {
+            margin-top: 5px;
+        }
+
+        .radio-group label {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
         .btn {
             background-color: #007bff;
             color: #fff;
@@ -57,12 +74,17 @@
             background-color: #0056b3;
         }
 
+        .btn-reset {
+            background-color: #ccc;
+            color: #000;
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Sign Up</h2>
-        <form action="#" method="post">
+        <form action="" method="post">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
@@ -83,7 +105,24 @@
                 <input type="password" id="confirmPassword" name="confirmPassword" required>
             </div>
 
+            <div class="form-group">
+                <label for="course">Select Course:</label>
+                <select id="course" name="course">
+                    <option value="python">Python</option>
+                    <option value="datascience">Data Science</option>
+                    <option value="machinelearning">Machine Learning</option>
+                </select>
+            </div>
+
+            <div class="radio-group">
+                <label>Gender:</label>
+                <label for="male"><input type="radio" id="male" name="gender" value="male">Male</label>
+                <label for="female"><input type="radio" id="female" name="gender" value="female">Female</label>
+                <label for="other"><input type="radio" id="other" name="gender" value="other">Other</label>
+            </div>
+
             <button type="submit" class="btn">Sign Up</button>
+            <button type="reset" class="btn btn-reset">Reset</button>
         </form>
     </div>
 </body>
