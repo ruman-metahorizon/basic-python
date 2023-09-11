@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Current Time</title>
+    <style>
+        /* Style for the body */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        /* Style for the h1 element */
+        h1 {
+            color: #333;
+        }
+
+        /* Style for the p element with id "currentTime" */
+        #currentTime {
+            font-size: 24px;
+            color: #007bff;
+            /* Blue color */
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Current Time:</h1>
+    <p id="currentTime"></p>
+
+    <script>
+        function updateTime() {
+            const currentTimeElement = document.getElementById("currentTime");
+            currentTimeElement.textContent = new Date().toLocaleTimeString();
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime(); // Initial call to set the time immediately
+    </script>
+</body>
+
+</html>
