@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>time</title>
+</head>
+<body>
+    <h2>Clock</h2>
+    <span id = "time">
+<script>
+function updateTime() {
+    // const now = new Date();
+    // const hours = now.getHours().toString().padStart(2, '0');
+    // const minutes = now.getMinutes().toString().padStart(2, '0');
+    // const seconds = now.getSeconds().toString().padStart(2, '0');
+    // const timeString = `${hours}:${minutes}:${seconds}`;
+    // document.getElementById('time').textContent = timeString;
+    // const currentTimeElement = document.getElementById("time");
+    // currentTimeElement.textContent = new Date().toLocaleTimeString();
+
+    document.getElementById('time').textContent = new Date().toLocaleTimeString();
+}
+
+// Update the time every second
+setInterval(updateTime, 1000);
+
+// Initial update
+updateTime();
+
+
+</script>
+
+
+
+
+</body>
+</html>
